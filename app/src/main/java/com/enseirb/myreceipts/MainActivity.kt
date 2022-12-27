@@ -9,31 +9,14 @@ class MainActivity : AppCompatActivity() {
 
     private var categoryService: CategoryService = CategoryService();
 
-    private lateinit var categories: Array<String>
-
-    private var images = intArrayOf(
-        R.drawable.beef, R.drawable.beef, R.drawable.beef, R.drawable.beef,
-        R.drawable.beef, R.drawable.beef, R.drawable.beef, R.drawable.beef,
-        R.drawable.beef, R.drawable.beef, R.drawable.beef, R.drawable.beef,
-        R.drawable.beef, R.drawable.beef
-    );
 
     private lateinit var recyclerView: RecyclerView
-
-    private lateinit var categoriesAdapter: CategoriesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        categoryService.getCategories();
-
         recyclerView = findViewById(R.id.recycler_view)
 
-        categories = resources.getStringArray(R.array.categories)
-
-        categoriesAdapter = CategoriesAdapter(categories, images)
-        recyclerView.adapter = categoriesAdapter
-        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+        categoryService.getCategories(recyclerView,applicationContext, this);
     }
 }
