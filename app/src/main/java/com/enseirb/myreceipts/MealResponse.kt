@@ -1,11 +1,10 @@
 package com.enseirb.myreceipts
 
-class CategoryResponse {
+class MealResponse {
 
     var count: Int? = null
     var previous: String? = null
     var next: String? = null
 
-    var categories: List<Category>? = null
-
+    var meals: List<Meal>? = null
 }

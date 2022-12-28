@@ -1,6 +1,7 @@
 package com.enseirb.myreceipts
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var itemImage: ImageView = itemView.findViewById(R.id.category_image)
 }
 
-class CategoriesAdapter(val categories: List<Category>): RecyclerView.Adapter<CategoryViewHolder>() {
+class CategoriesAdapter(val categories: List<Category>, val applicationContext: Context): RecyclerView.Adapter<CategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
@@ -23,6 +24,12 @@ class CategoriesAdapter(val categories: List<Category>): RecyclerView.Adapter<Ca
 
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.itemText.setText(categories.get(position).strCategory)
+        holder.itemView.setOnClickListener{
+            val intent = Intent(applicationContext, MealActivity::class.java)
+            intent.putExtra("strCategory", categories.get(position).strCategory)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            applicationContext.startActivity(intent)
+        }
         Picasso.get().load(categories.get(position).strCategoryThumb).into(holder.itemImage)
     }
 
