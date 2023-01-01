@@ -1,6 +1,7 @@
 package com.enseirb.myreceipts
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,12 @@ class MealsAdapter(val meals: List<Meal>, val applicationContext: Context): Recy
 
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
         holder.itemText.setText(meals.get(position).strMeal)
+        holder.itemView.setOnClickListener{
+            val intent = Intent(applicationContext, ReceiptActivity::class.java)
+            intent.putExtra("idMeal", meals.get(position).idMeal.toString())
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            applicationContext.startActivity(intent)
+        }
         Picasso.get().load(meals.get(position).strMealThumb).into(holder.itemImage)
     }
 

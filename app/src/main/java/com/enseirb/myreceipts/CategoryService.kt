@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import okhttp3.*
+import org.json.JSONObject
 import java.io.IOException
 import java.net.URL
 
@@ -73,4 +74,62 @@ class CategoryService {
         })
     }
 
+    private fun getIngredientsMeasures(responseBody : String?,  receiptResponse:  ReceiptResponse){
+        val returnedRecipe = responseBody?.let { JSONObject(it) }?.getJSONArray("meals")?.getJSONObject(0)
+        for(j in 1 until 21) {
+            if (returnedRecipe != null) {
+                if (returnedRecipe.getString("strIngredient$j").trim()
+                        .isNotEmpty() && returnedRecipe.getString("strIngredient$j")
+                        .trim() != "null"
+                    && returnedRecipe.getString("strMeasure$j").trim()
+                        .isNotEmpty() && returnedRecipe.getString("strMeasure$j")
+                        .trim() != "null"
+                ) {
+                    receiptResponse.receipts?.get(0)?.strIngredient?.add(
+                        returnedRecipe.getString(
+                            "strIngredient$j"
+                        )
+                    )
+                    receiptResponse.receipts?.get(0)?.strMeasure?.add(
+                        returnedRecipe.getString(
+                            "strMeasure$j"
+                        )
+                    )
+                }
+            }
+        }
+    }
+
+    fun getReceiptsOfMeal(idMeal: String ,recyclerView: RecyclerView, applicationContext:  Context, activity: ReceiptActivity){
+        val url = URL("https://www.themealdb.com/api/json/v1/1/lookup.php?i=$idMeal")
+
+        val request = Request.Builder().url(url).build();
+
+        val client = OkHttpClient();
+
+        var receiptsAdapter: ReceiptsAdapter
+
+        client.newCall(request).enqueue( object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                Log.e("OKHTTP", e.localizedMessage)
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val responseBody = response.body?.string()
+                responseBody.let {
+                    val gson = Gson()
+                    val receiptResponse = gson.fromJson(it, ReceiptResponse::class.java)
+                    getIngredientsMeasures(responseBody, receiptResponse)
+                    receiptResponse.receipts?.let { it1 ->
+                        activity.runOnUiThread {
+                            receiptsAdapter = ReceiptsAdapter(it1, applicationContext)
+                            recyclerView.adapter = receiptsAdapter
+                            recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+                        }
+                    }
+                    Log.d("OKHTTP", "Got " + receiptResponse.receipts?.count() + " results");
+                }
+            }
+        })
+    }
 }
