@@ -1,4 +1,4 @@
-package com.enseirb.myreceipts
+package com.enseirb.myreceipts.data
 
 class Meal {
     var idMeal: Int? = null

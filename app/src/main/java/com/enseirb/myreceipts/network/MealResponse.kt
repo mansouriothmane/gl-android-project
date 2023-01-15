@@ -1,4 +1,6 @@
-package com.enseirb.myreceipts
+package com.enseirb.myreceipts.network
+
+import com.enseirb.myreceipts.data.Meal
 
 class MealResponse {
 

@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.enseirb.myreceipts.activity.MealActivity
+import com.enseirb.myreceipts.data.Category
+import com.enseirb.myreceipts.storage.CategoryStore
 import com.squareup.picasso.Picasso
 
 class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

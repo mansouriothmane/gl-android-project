@@ -1,4 +1,4 @@
-package com.enseirb.myreceipts
+package com.enseirb.myreceipts.data
 
 class Category{
     var idCategory: Int? = null

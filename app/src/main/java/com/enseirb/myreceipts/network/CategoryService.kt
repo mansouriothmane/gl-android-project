@@ -1,13 +1,14 @@
-package com.enseirb.myreceipts
+package com.enseirb.myreceipts.network
 
 import android.content.Context
 import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.enseirb.myreceipts.*
+import com.enseirb.myreceipts.activity.MainActivity
+import com.enseirb.myreceipts.activity.MealActivity
+import com.enseirb.myreceipts.activity.ReceiptActivity
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException

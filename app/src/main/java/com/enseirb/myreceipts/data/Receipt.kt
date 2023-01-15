@@ -1,4 +1,4 @@
-package com.enseirb.myreceipts
+package com.enseirb.myreceipts.data
 
 import com.google.gson.annotations.SerializedName
 import java.util.Date

@@ -1,8 +1,10 @@
-package com.enseirb.myreceipts
+package com.enseirb.myreceipts.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
+import com.enseirb.myreceipts.network.CategoryService
+import com.enseirb.myreceipts.R
 
 class MainActivity : AppCompatActivity() {
 

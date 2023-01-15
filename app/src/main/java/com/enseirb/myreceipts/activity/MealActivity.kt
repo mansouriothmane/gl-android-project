@@ -1,10 +1,13 @@
-package com.enseirb.myreceipts
+package com.enseirb.myreceipts.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
+import com.enseirb.myreceipts.network.CategoryService
+import com.enseirb.myreceipts.storage.CategoryStore
+import com.enseirb.myreceipts.R
 
 class MealActivity : AppCompatActivity(){
     private var categoryService: CategoryService = CategoryService()
