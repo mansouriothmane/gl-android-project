@@ -8,7 +8,6 @@ class MainActivity : AppCompatActivity() {
 
     private var categoryService: CategoryService = CategoryService();
 
-
     private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {

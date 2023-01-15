@@ -29,10 +29,10 @@
         </activity>
         <activity
             android:name=".MealActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
@@ -42,10 +42,10 @@
         </activity>
         <activity
             android:name=".ReceiptActivity"
-            android:exported="true">
-            <intent-filter>
+            android:exported="true"
+            android:parentActivityName=".MealActivity">
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 

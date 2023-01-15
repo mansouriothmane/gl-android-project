@@ -2,9 +2,12 @@ package com.enseirb.myreceipts
 
 import android.content.Context
 import android.util.Log
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -13,7 +16,7 @@ import java.net.URL
 
 class CategoryService {
 
-     fun getCategories(recyclerView: RecyclerView, applicationContext:  Context, activity: MainActivity){
+     fun getCategories(recyclerView: RecyclerView, applicationContext: Context, activity: MainActivity){
         val url = URL("https://www.themealdb.com/api/json/v1/1/categories.php")
 
         var categoriesAdapter: CategoriesAdapter
@@ -74,7 +77,7 @@ class CategoryService {
         })
     }
 
-    private fun getIngredientsMeasures(responseBody : String?,  receiptResponse:  ReceiptResponse){
+    private fun getIngredientsMeasures(responseBody : String?, receiptResponse: ReceiptResponse){
         val returnedRecipe = responseBody?.let { JSONObject(it) }?.getJSONArray("meals")?.getJSONObject(0)
         for(j in 1 until 21) {
             if (returnedRecipe != null) {
@@ -100,14 +103,13 @@ class CategoryService {
         }
     }
 
-    fun getReceiptsOfMeal(idMeal: String ,recyclerView: RecyclerView, applicationContext:  Context, activity: ReceiptActivity){
+    fun getReceiptsOfMeal(idMeal: String, recyclerView: RecyclerView, applicationContext: Context, activity: ReceiptActivity){
         val url = URL("https://www.themealdb.com/api/json/v1/1/lookup.php?i=$idMeal")
 
+        var receiptAdapter: ReceiptAdapter
         val request = Request.Builder().url(url).build();
 
         val client = OkHttpClient();
-
-        var receiptsAdapter: ReceiptsAdapter
 
         client.newCall(request).enqueue( object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -120,14 +122,21 @@ class CategoryService {
                     val gson = Gson()
                     val receiptResponse = gson.fromJson(it, ReceiptResponse::class.java)
                     getIngredientsMeasures(responseBody, receiptResponse)
+                    Log.d("OKHTTP", "Trying " + receiptResponse.receipts);
                     receiptResponse.receipts?.let { it1 ->
                         activity.runOnUiThread {
-                            receiptsAdapter = ReceiptsAdapter(it1, applicationContext)
-                            recyclerView.adapter = receiptsAdapter
+                            receiptAdapter = ReceiptAdapter(it1.get(0), applicationContext)
+                            recyclerView.adapter = receiptAdapter
                             recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+                            //titleView.setText(it1.get(0).strMeal)
+                            //Picasso.get().load(it1.get(0).strMealThumb).into(thumbView)
+                            //descriptionView.setText(it1.get(0).strInstructions)
+                            //ingredientsAdapter = IngredientsAdapter(it1.get(0).strIngredient, it1.get(0).strMeasure, applicationContext)
+                            //ingredientsView.adapter = ingredientsAdapter
+                            //ingredientsView.layoutManager = LinearLayoutManager(applicationContext)
                         }
                     }
-                    Log.d("OKHTTP", "Got " + receiptResponse.receipts?.count() + " results");
+                    Log.d("OKHTTP", "Got " + receiptResponse.receipts);
                 }
             }
         })
