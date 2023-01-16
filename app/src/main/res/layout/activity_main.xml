@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="Welcome chief ! what are you cooking today ?" />
+            android:text="@string/categories_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categories_recycler_view"

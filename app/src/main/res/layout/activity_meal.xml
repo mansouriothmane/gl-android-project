@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="Category Name" />
+            android:text="@string/category_name" />
 
         <TextView
             android:id="@+id/category_description"
@@ -24,14 +24,14 @@
             android:textSize="16sp"
             android:maxLines="2"
             android:ellipsize="end"
-            android:text="Category Description"
+            android:text="@string/category_description"
             android:layout_marginTop="8dp"/>
 
         <TextView
             android:id="@+id/see_more_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="See More"
+            android:text="@string/see_more"
             android:textStyle="bold"
             android:layout_marginTop="8dp"
             android:onClick="onSeeMoreClick"

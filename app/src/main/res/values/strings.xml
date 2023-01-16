@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">myReceipts</string>
-    
+
+    <string name="categories_text">Welcome chief ! what are you cooking today ?</string>
+    <string name="category_name">Category Name</string>
+    <string name="category_description">Category Description</string>
+    <string name="see_more">See More</string>
+    <string name="instructions_text">Instructions text</string>
+    <string name="watch_a_youtube_video">Watch a Youtube video</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="meal_name">Meal Name</string>
+    <string name="category_name2">Category Name</string>
+    <string name="meal_name2">Meal Name</string>
+
     <string-array name="categories">
         <item>Beef</item>
         <item>Chicken</item>
