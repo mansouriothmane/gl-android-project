@@ -2,7 +2,7 @@
 Cette application permet à l'utilisateur de sélectionner une recette à préparer en fonction de sa catégorie.
 Des images et des vidéos du plat sont également fournies pour aider l'utilisateur à visualiser le résultat final.
 
-## Developpeurs :
+## Développeurs :
 * Othmane Mansouri  
 * Hamza El Fani  
 
