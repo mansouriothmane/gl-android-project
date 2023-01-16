@@ -11,4 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:backgroundTint="#FF0000">
+
+    </FrameLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_youtube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="20dp"
+        android:src="@android:drawable/ic_media_play"
+        android:visibility="visible"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:backgroundTintMode="add"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:rippleColor="#00FFFFFF"
+        app:useCompatPadding="false" />
+
+
 </RelativeLayout>

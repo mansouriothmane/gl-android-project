@@ -1,13 +1,17 @@
 package com.enseirb.myreceipts.network
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enseirb.myreceipts.*
 import com.enseirb.myreceipts.activity.MainActivity
 import com.enseirb.myreceipts.activity.MealActivity
 import com.enseirb.myreceipts.activity.ReceiptActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.gson.Gson
 import okhttp3.*
 import org.json.JSONObject
@@ -104,7 +108,8 @@ class CategoryService {
         }
     }
 
-    fun getReceiptsOfMeal(idMeal: String, recyclerView: RecyclerView, applicationContext: Context, activity: ReceiptActivity){
+    fun getReceiptsOfMeal(idMeal: String, recyclerView: RecyclerView, applicationContext: Context, activity: ReceiptActivity, youtubeButton : FloatingActionButton){
+
         val url = URL("https://www.themealdb.com/api/json/v1/1/lookup.php?i=$idMeal")
 
         var receiptAdapter: ReceiptAdapter
@@ -129,6 +134,12 @@ class CategoryService {
                             receiptAdapter = ReceiptAdapter(it1.get(0), applicationContext)
                             recyclerView.adapter = receiptAdapter
                             recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+                            youtubeButton.setOnClickListener {
+                                val youtubeUrl = Uri.parse(it1.get(0).strYoutube)
+                                val youtubeIntent = Intent(Intent.ACTION_VIEW, youtubeUrl)
+                                youtubeIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                                applicationContext.startActivity(youtubeIntent)
+                            }
                             //titleView.setText(it1.get(0).strMeal)
                             //Picasso.get().load(it1.get(0).strMealThumb).into(thumbView)
                             //descriptionView.setText(it1.get(0).strInstructions)

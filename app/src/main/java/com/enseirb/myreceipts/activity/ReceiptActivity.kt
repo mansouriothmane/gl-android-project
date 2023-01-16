@@ -1,6 +1,7 @@
 package com.enseirb.myreceipts.activity
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -9,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.enseirb.myreceipts.network.CategoryService
 import com.enseirb.myreceipts.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ReceiptActivity : AppCompatActivity(){
 
@@ -19,6 +21,7 @@ class ReceiptActivity : AppCompatActivity(){
     private lateinit var thumbView: ImageView
     private lateinit var descriptionView: TextView
     private lateinit var ingredientsView: RecyclerView
+    private lateinit var youtubeButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,7 @@ class ReceiptActivity : AppCompatActivity(){
 
         val intent = getIntent()
         val idMeal = intent.getStringExtra("idMeal")
+        youtubeButton = findViewById(R.id.fab_youtube)
         //titleView = findViewById(R.id.mealName)
         //thumbView = findViewById(R.id.mealThumb)
         //descriptionView = findViewById(R.id.mealInstructions)
@@ -34,7 +38,7 @@ class ReceiptActivity : AppCompatActivity(){
 
         recyclerView = findViewById(R.id.receipt_recycler_view)
 
-        categoryService.getReceiptsOfMeal(idMeal!!, recyclerView, applicationContext, this);
+        categoryService.getReceiptsOfMeal(idMeal!!, recyclerView, applicationContext, this, youtubeButton);
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
