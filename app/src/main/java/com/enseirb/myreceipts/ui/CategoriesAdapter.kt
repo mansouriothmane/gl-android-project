@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso
 
 class CategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var itemText: TextView = itemView.findViewById(R.id.category_name)
-    var itemImage: ImageView = itemView.findViewById(R.id.category_image)
+    var itemImage: ImageView = itemView.findViewById(R.id.category_thumbnail)
 }
 
 class CategoriesAdapter(val categories: List<Category>, val applicationContext: Context): RecyclerView.Adapter<CategoryViewHolder>() {

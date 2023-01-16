@@ -13,13 +13,13 @@ import com.enseirb.myreceipts.data.Meal
 import com.squareup.picasso.Picasso
 
 class MealViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var itemText: TextView = itemView.findViewById(R.id.category_name)
-    var itemImage: ImageView = itemView.findViewById(R.id.category_image)
+    var itemText: TextView = itemView.findViewById(R.id.meal_name)
+    var itemImage: ImageView = itemView.findViewById(R.id.meal_thumbnail)
 }
 
 class MealsAdapter(val meals: List<Meal>, val applicationContext: Context): RecyclerView.Adapter<MealViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_meal, parent, false)
         return MealViewHolder(itemView)
     }
 
