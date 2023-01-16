@@ -15,6 +15,6 @@ Un bouton de retour qui permet à l'utilisateur de naviguer facilement entre les
 
 
 ## Difficultées rencontrées :
-La manipulation d'Android Studio (Compliquer à tester l'application).  
+La manipulation d'Android Studio (Compliqué à tester l'application).  
 La séparation des responsabilités afin d'avoir une architecture maintenable et pratique à utiliser.  
 Éviter la duplication de code.  
