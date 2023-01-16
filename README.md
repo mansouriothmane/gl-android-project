@@ -3,8 +3,8 @@ Cette application permet à l'utilisateur de sélectionner une recette à prépa
 Des images et des vidéos du plat sont également fournies pour aider l'utilisateur à visualiser le résultat final.
 
 ## Developpeurs :
-Othmane Mansouri
-Hamza El Fani
+Othmane Mansouri  
+Hamza El Fani  
 
 ## Fonctionnalitées développées :
 L'application met à disposition toutes les catégories renvoyées par l'api.
