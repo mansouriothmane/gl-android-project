@@ -1,20 +1,22 @@
-## Sujet :
-Cette application permet à l'utilisateur de sélectionner une recette à préparer en fonction de sa catégorie.
-Des images et des vidéos du plat sont également fournies pour aider l'utilisateur à visualiser le résultat final.
+# RecipeApp
 
-## Développeurs :
-* Othmane Mansouri  
-* Hamza El Fani  
+A simple Android app built with Kotlin that queries a public API to help users explore recipes based on categories. The app displays detailed information for each recipe, including ingredients, measurements, instructions, and links to YouTube videos (if available). Users can easily navigate between categories, dishes, and recipes, with a back button for smooth navigation.
 
-## Fonctionnalitées développées :
-- L'application met à disposition toutes les catégories renvoyées par l'api.  
-- Pour chaque catégorie, l'application affiche tous les plats de la catégorie.  
-- Pour chaque plat, l'application affiche la recette, les ingrédients, les mesures et les instructions à suivre.  
-- Dans l'interface "Recette" l'application met à disposition un bouton qui redirige l'utilisateur vers une vidéo YouTube si le lien est disponible.  
-- Un bouton de retour qui permet à l'utilisateur de naviguer facilement entre les interfaces de l'application.  
+## Key Features:
+- Fetches recipe data dynamically from an external API, including available categories and their corresponding recipes.
+- View detailed recipes with ingredients, instructions, and measurements.
+- Watch YouTube video tutorials from the recipe screen (if a video link is available).
+- Easy navigation with a back button to return to previous screens.
 
+## Technologies Used:
+- **Kotlin**: Main programming language for app development.
+- **Android Studio**: IDE used for building the app.
 
-## Difficultées rencontrées :
-- La manipulation des émulateurs (Compliqué à tester l'application).  
-- La séparation des responsabilités afin d'avoir une architecture maintenable et pratique à utiliser.  
-- Éviter la duplication de code.  
+## Developer Team:
+- **Othmane Mansouri**
+- **Hamza El Fani**
+
+## Challenges Faced:
+- Working with emulators (challenging to test the app effectively).
+- Ensuring separation of responsibilities to maintain a clean and maintainable architecture.
+- Avoiding code duplication for better readability and maintainability.
